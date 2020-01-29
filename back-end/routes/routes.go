@@ -58,7 +58,7 @@ func main() {
 		id := c.Param("id")
 		c.JSON(200, gin.H{
 			"status":  "ya posted",
-			"message": "/vendors/"id + " deleted",
+			"message": "/vendors/" + id + " deleted",
 		})
 	})
 
