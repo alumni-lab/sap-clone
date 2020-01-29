@@ -1,8 +1,8 @@
-package main
+package routes
 
 import "github.com/gin-gonic/gin"
 
-func main() {
+func Routes() {
 	router := gin.Default()
 
 	// Get Vendors
@@ -66,15 +66,16 @@ func main() {
 		id := c.Param("id")
 		c.JSON(200, gin.H{
 			"status":  "ya posted",
-			"message": "you in addresses" + id,
+			"message": "/vendors/" + id + "/addresses",
 		})
 	})
 
 	router.POST("/vendors/:id/addresses/:address_id", func(c *gin.Context) {
-		id := c.Param("id") + " " + c.Param("address_id")
+		id := c.Param("id")
+		address := c.Param("address_id")
 		c.JSON(200, gin.H{
 			"status":  "ya posted",
-			"message": id,
+			"message": "/vendors/" + id + "/addresses/" + address,
 		})
 	})
 
@@ -82,7 +83,7 @@ func main() {
 	router.GET("/customer-orders", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"status":  "ya got got",
-			"message": "all customers",
+			"message": "/customers-orders",
 		})
 	})
 
@@ -90,7 +91,7 @@ func main() {
 		id := c.Param("id")
 		c.JSON(200, gin.H{
 			"status":  "ya got got",
-			"message": id + " customer id",
+			"message": "/customer-orders/" + id,
 		})
 	})
 
@@ -100,14 +101,14 @@ func main() {
 	router.POST("/customer-orders", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"status":  "ya posted",
-			"message": "post customer order",
+			"message": "/customer-orders",
 		})
 	})
 	router.POST("/customer-orders/:id", func(c *gin.Context) {
 		id := c.Param("id")
 		c.JSON(200, gin.H{
 			"status":  "ya posted",
-			"message": id + " post customer order",
+			"message": "/customer-orders/" + id,
 		})
 	})
 
@@ -115,7 +116,7 @@ func main() {
 		id := c.Param("id")
 		c.JSON(200, gin.H{
 			"status":  "ya posted",
-			"message": id + " customer order deleted",
+			"message": "/customer-orders/" + id + "/delete",
 		})
 	})
 
@@ -123,7 +124,7 @@ func main() {
 	router.GET("/vendor-orders", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"status":  "ya got got",
-			"message": "all vendor id",
+			"message": "/vendor-orders",
 		})
 	})
 
@@ -131,7 +132,7 @@ func main() {
 		id := c.Param("id")
 		c.JSON(200, gin.H{
 			"status":  "ya got got",
-			"message": id + " vendor order id",
+			"message": "/vendor-orders/" + id,
 		})
 	})
 
@@ -141,14 +142,14 @@ func main() {
 	router.POST("/vendor-orders", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"status":  "ya posted",
-			"message": "post vendor order",
+			"message": "/vendor-orders post",
 		})
 	})
 	router.POST("/vendor-orders/:id", func(c *gin.Context) {
 		id := c.Param("id")
 		c.JSON(200, gin.H{
 			"status":  "ya posted",
-			"message": id + " post vendor order",
+			"message": "/vendor-orders/" + id + " posted",
 		})
 	})
 
@@ -156,7 +157,7 @@ func main() {
 		id := c.Param("id")
 		c.JSON(200, gin.H{
 			"status":  "ya posted",
-			"message": id + " vendor order deleted",
+			"message": "/vendor-orders/" + id + "/delete",
 		})
 	})
 	router.Run(":8000")
