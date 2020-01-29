@@ -11,6 +11,6 @@ storiesOf("InventoryListItem", module) //Initiates Storybook and registers our I
 .addParameters({
   backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
 }) // Provides the default background color for our component
-.add("Unselected", () => <InventoryListItem name="Rack of Ribs" items={5} />) // To define our stories, we call add() once for each of our test states to generate a story
-.add("Selected", () => <InventoryListItem name="Rack of Ribs" items={5} selected />) 
+.add("Unselected", () => <InventoryListItem name="Rack of Ribs" quantity={5} description="saucy happiness" type="type" vendor="Slow Cow Farms"/>) // To define our stories, we call add() once for each of our test states to generate a story
+.add("Selected", () => <InventoryListItem name="Rack of Ribs" quantity={5} description="saucy happiness" type="type" vendor="Slow Cow Farms"selected />) 
 
