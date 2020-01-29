@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"../schema"
+	"../seeds"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -19,4 +20,5 @@ func main() {
 	log.Println("Connection Established")
 
 	schema.Migrate(db)
+	seeds.Seed(db)
 }
