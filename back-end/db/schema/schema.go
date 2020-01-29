@@ -83,21 +83,23 @@ type OrderItems struct {
 // Vendors Schema
 type Vendors struct {
 	gorm.Model
-	User       Users     `gorm:"NOT NULL"`
-	UserID     uint      `gorm:"NOT NULL"`
-	Customer   Customers `gorm:"NOT NULL"`
-	CustomerID uint      `gorm:"NOT NULL"`
-	Note       string
+	Email string `gorm:"NOT NULL"`
+	Name  string `gorm:"NOT NULL"`
+	Phone string `gorm:"NOT NULL"`
+	Note  string
 }
 
 // VendorOrders Schema
+// This needs to be restrucuted, slight improvement
+// over what's in the ERD but it does not fulfill
+// requirements for the app.
 type VendorOrders struct {
 	gorm.Model
-	User       Users     `gorm:"NOT NULL"`
-	UserID     uint      `gorm:"NOT NULL"`
-	Customer   Customers `gorm:"NOT NULL"`
-	CustomerID uint      `gorm:"NOT NULL"`
-	Note       string
+	User     Users   `gorm:"NOT NULL"`
+	UserID   uint    `gorm:"NOT NULL"`
+	Vendor   Vendors `gorm:"NOT NULL"`
+	VendorID uint    `gorm:"NOT NULL"`
+	Note     string
 }
 
 // Addresses Schema
