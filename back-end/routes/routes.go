@@ -142,14 +142,14 @@ func Routes() {
 	router.POST("/vendor-orders", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"status":  "ya posted",
-			"message": "/vendor-orders post",
+			"message": "/vendor-orders",
 		})
 	})
 	router.POST("/vendor-orders/:id", func(c *gin.Context) {
 		id := c.Param("id")
 		c.JSON(200, gin.H{
 			"status":  "ya posted",
-			"message": "/vendor-orders/" + id + " posted",
+			"message": "/vendor-orders/" + id,
 		})
 	})
 
