@@ -1,6 +1,0 @@
-database:
-  dbhost: "127.0.0.1"
-  dbname: "postgres"
-  dbport: "4321"
-  dbuser: "sap"
-  dbpassword: "password"
