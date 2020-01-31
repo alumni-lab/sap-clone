@@ -1,0 +1,5 @@
+database:
+  dbname: "postgres"
+  dbport: "4321"
+  dbuser: "sap"
+  dbpassword: "password"
