@@ -15,10 +15,13 @@ var varTypes = [5]string{
 	"DBPassword",
 }
 
-func retrieveDBEnvVariables() {
+// RetrieveDBEnvVariables Finds and assigns
+// ALL key-values under config.yml to
+// env variables
+func RetrieveDBEnvVariables() {
 	viper.SetConfigName("config")
 	// Could add multiple paths if neccesary
-	viper.AddConfigPath("../..")
+	viper.AddConfigPath("../../..")
 	viper.SetConfigType("yml")
 
 	// Maybe be able to use this to change

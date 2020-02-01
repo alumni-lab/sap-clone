@@ -1,10 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"strings"
 
+	"../../config"
 	"../schema"
 	"../seeds"
 
@@ -14,11 +16,7 @@ import (
 )
 
 func main() {
-	os.Setenv("DB_HOST", "127.0.0.1")
-	os.Setenv("DB_PORT", "5432")
-	os.Setenv("DB_USER", "sap")
-	os.Setenv("DB_PASSWORD", "password")
-	os.Setenv("DB_NAME", "postgres")
+	config.RetrieveDBEnvVariables()
 
 	dbDialogue := createConnectionDialogue()
 
@@ -37,16 +35,18 @@ func createConnectionDialogue() string {
 	var dbDialogue strings.Builder
 
 	dbDialogue.WriteString("host=")
-	dbDialogue.WriteString(os.Getenv("DB_HOST"))
+	dbDialogue.WriteString(os.Getenv("DBHost"))
 	dbDialogue.WriteString(" port=")
-	dbDialogue.WriteString(os.Getenv("DB_PORT"))
+	dbDialogue.WriteString(os.Getenv("DBPort"))
 	dbDialogue.WriteString(" user=")
-	dbDialogue.WriteString(os.Getenv("DB_USER"))
+	dbDialogue.WriteString(os.Getenv("DBUser"))
 	dbDialogue.WriteString(" dbname=")
-	dbDialogue.WriteString(os.Getenv("DB_NAME"))
+	dbDialogue.WriteString(os.Getenv("DBName"))
 	dbDialogue.WriteString(" password=")
-	dbDialogue.WriteString("'" + os.Getenv("DB_PASSWORD") + "'")
+	dbDialogue.WriteString("'" + os.Getenv("DBPassword") + "'")
 	dbDialogue.WriteString(" sslmode=disable")
+
+	fmt.Println(dbDialogue.String())
 
 	return dbDialogue.String()
 }
