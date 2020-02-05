@@ -55,7 +55,7 @@ const POs = [
     POid: 1050,
     customerName: "Mr. Andersen",
     amount: 10110
-  }
+  } 
 ];
 
 storiesOf("InventoryListItem", module) //Initiates Storybook and registers our InventoryListItem component
