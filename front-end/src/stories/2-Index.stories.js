@@ -6,6 +6,7 @@ import { action } from "@storybook/addon-actions";
 
 import InventoryListItem from "../components/InventoryListItem";
 import InventoryList from "../components/InventoryList";
+import Header from "../components/Header";
 
 
 storiesOf("InventoryListItem", module) //Initiates Storybook and registers our InventoryListItem component
@@ -46,3 +47,9 @@ storiesOf("InventoryList", module)
   .add("InventoryList", () => (
     <InventoryList items={items} />
   ))
+
+  storiesOf("Header", module)
+  .add("logged in", () => (
+    <Header username="Bobby" logo="https://i.imgur.com/LpaY82x.png"/>
+  ))
+  .add("logged out", () => (<Header logo="https://i.imgur.com/LpaY82x.png"/>))
