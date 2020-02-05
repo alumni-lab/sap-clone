@@ -53,3 +53,4 @@ storiesOf("InventoryList", module)
     <Header username="Bobby" logo="https://i.imgur.com/LpaY82x.png"/>
   ))
   .add("logged out", () => (<Header logo="https://i.imgur.com/LpaY82x.png"/>))
+  

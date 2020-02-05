@@ -15,3 +15,4 @@ export default function InventoryListItem(props) {
     </li>
   );
 }
+
