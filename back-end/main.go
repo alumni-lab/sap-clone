@@ -1,6 +1,9 @@
 package main
 
-// Placeholder
-func main() {
+import (
+	"./routes"
+)
 
+func main() {
+	routes.Routes()
 }
