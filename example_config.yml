@@ -1,0 +1,6 @@
+database:
+  DBHost: ""
+  DBName: ""
+  DBPort: ""
+  DBUser: ""
+  DBPassword: ""
