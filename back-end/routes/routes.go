@@ -31,10 +31,10 @@ func Routes() {
 
 	router.GET("/vendors/:id/addresses/:address_id", func(c *gin.Context) {
 		id := c.Param("id")
-		address :=  c.Param("address_id")
+		address := c.Param("address_id")
 		c.JSON(200, gin.H{
 			"status":  "ya got got",
-			"message": "/vendors/" + id + "/addresses" + address ,
+			"message": "/vendors/" + id + "/addresses" + address,
 		})
 	})
 
@@ -95,7 +95,6 @@ func Routes() {
 		})
 	})
 
-
 	//Post customer orders
 
 	router.POST("/customer-orders", func(c *gin.Context) {
@@ -136,7 +135,6 @@ func Routes() {
 		})
 	})
 
-
 	//Post vendor orders
 
 	router.POST("/vendor-orders", func(c *gin.Context) {
@@ -160,7 +158,7 @@ func Routes() {
 			"message": "/vendor-orders/" + id + "/delete",
 		})
 	})
-  
+
 	// Item Routes
 
 	router.GET("/items", func(c *gin.Context) {
@@ -296,10 +294,10 @@ func Routes() {
 	router.POST("/customers/:id/addresses/:address_id", func(c *gin.Context) {
 		customer := c.Param("id")
 		address := c.Param("address_id")
-		c.JSON(200, gin.H{ 
+		c.JSON(200, gin.H{
 			"message":     "post request made to /customers/:id/addresses/:address_id",
 			"customer_id": customer,
-			"address": address,
+			"address":     address,
 		})
 	})
 
@@ -309,7 +307,7 @@ func Routes() {
 		c.JSON(200, gin.H{
 			"message":     "post request made to /customers/:id/addresses/:address_id/delete",
 			"customer_id": customer,
-			"address": address,
+			"address":     address,
 		})
 	})
 
