@@ -28,15 +28,6 @@ func dropExistingTables(db *gorm.DB) {
 	db.DropTableIfExists(&Addresses{})
 }
 
-// Users Schema
-type Users struct {
-	gorm.Model
-	Email     string `gorm:"NOT NULL"`
-	Role      string `gorm:"NOT NULL"`
-	FirstName string `gorm:"NOT NULL"`
-	LastName  string `gorm:"NOT NULL"`
-}
-
 // Customers Schema
 type Customers struct {
 	gorm.Model
