@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
-	"github.com/alumni-lab/sap-clone/back-end/db/schema"
-	"github.com/alumni-lab/sap-clone/back-end/db/seeds"
 	"github.com/alumni-lab/sap-clone/config"
+	"github.com/alumni-lab/sap-clone/db/schema"
+	"github.com/alumni-lab/sap-clone/db/seeds"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"

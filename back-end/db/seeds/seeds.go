@@ -1,7 +1,7 @@
 package seeds
 
 import (
-	"../schema"
+	"github.com/alumni-lab/sap-clone/db/schema"
 	"github.com/jinzhu/gorm"
 )
 

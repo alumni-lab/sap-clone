@@ -2,9 +2,7 @@ package schema
 
 import (
 	"errors"
-	"log"
 
-	"github.com/alumni-lab/sap-clone/config"
 	"github.com/jinzhu/gorm"
 )
 
@@ -15,24 +13,6 @@ type Users struct {
 	Role      string `gorm:"NOT NULL"`
 	FirstName string `gorm:"NOT NULL"`
 	LastName  string `gorm:"NOT NULL"`
-}
-
-// main function to test
-
-func main() {
-	config.RetrieveDBEnvVariables()
-
-	dbDialogue := createConnectionDialogue()
-
-	db, err := gorm.Open("postgres", dbDialogue)
-	if err != nil {
-		panic(err)
-	}
-	defer db.Close()
-	log.Println("Connection Established")
-
-	user := Users{}
-	userCopy, err := user.FindUserByID(db, 1)
 }
 
 // We can organize queries for specific entities here, but
