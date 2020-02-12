@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/alumni-lab/sap-clone/config"
+	"github.com/alumni-lab/sap-clone/db"
 	"github.com/alumni-lab/sap-clone/db/schema"
 	"github.com/alumni-lab/sap-clone/db/seeds"
 
@@ -15,7 +17,7 @@ import (
 func main() {
 	config.RetrieveDBEnvVariables()
 
-	dbDialogue := CreateConnectionDialogue()
+	dbDialogue := db.CreateConnectionDialogue()
 
 	db, err := gorm.Open("postgres", dbDialogue)
 	if err != nil {
@@ -26,4 +28,13 @@ func main() {
 
 	schema.Migrate(db)
 	seeds.Seed(db)
+
+	user := schema.Users{}
+
+	_, error := user.FindUserByID(db, 1)
+	if error != nil {
+		panic(error)
+	}
+
+	fmt.Println(user)
 }

@@ -31,3 +31,7 @@ func (user *Users) FindUserByID(db *gorm.DB, uid uint32) (*Users, error) {
 	}
 	return user, err
 }
+
+func (user *Users) FindUsersByName(db *gorm.DB, firstName, lastName string) ([]Users, error) {
+
+}
