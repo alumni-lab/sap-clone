@@ -29,9 +29,19 @@ func (user *Users) FindUserByID(db *gorm.DB, uid uint32) (*Users, error) {
 	if gorm.IsRecordNotFoundError(err) {
 		return &Users{}, errors.New("User not found")
 	}
+
 	return user, err
 }
 
 func (user *Users) FindUsersByName(db *gorm.DB, firstName, lastName string) ([]Users, error) {
+	err := db.Debug().Model(Users{}).Where("firstname = ? AND lastname = ?", firstName, lastName).Take(&user).Error
 
+	if err != nil {
+		return []Users{}, err
+	}
+	if gorm.IsRecordNotFoundError(err) {
+		return []Users{}, errors.New("User not found")
+	}
+
+	return []Users{}, err
 }

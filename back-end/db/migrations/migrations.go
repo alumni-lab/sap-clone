@@ -29,12 +29,13 @@ func main() {
 	schema.Migrate(db)
 	seeds.Seed(db)
 
-	user := schema.Users{}
+	// Tested to confirm FindUserByID works.
+	// user := schema.Users{}
 
-	_, error := user.FindUserByID(db, 1)
-	if error != nil {
-		panic(error)
-	}
+	// _, error := user.FindUserByID(db, 1)
+	// if error != nil {
+	// 	panic(error)
+	// }
 
-	fmt.Println(user)
+	// fmt.Println(user)
 }

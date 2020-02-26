@@ -57,6 +57,8 @@ func (s *Suite) TestUserGet() {
 
 	user := Users{}
 	res, err := user.FindUserByID(s.DB, 1)
+
+	print(res, err)
 }
 
 func TestMigrate(t *testing.T) {
