@@ -1,5 +1,5 @@
 import React from 'react';
-import InventoryList from "../components/InventoryList";
+import InventoryList from "./components/InventoryList";
 
 
 function App() {
