@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
+import MaterialTable from 'material-table';
 
 
 import InventoryListItem from "../components/InventoryListItem";
@@ -9,6 +10,7 @@ import InventoryList from "../components/InventoryList";
 import Header from "../components/Header";
 import PurchaseOrderItem from "../components/PurchaseOrderItem";
 import PurchaseOrderList from "../components/PurchaseOrderList";
+import Test from "../components/test";
 
 const items = [
   {
@@ -55,15 +57,15 @@ const POs = [
     POid: 1050,
     customerName: "Mr. Andersen",
     amount: 10110
-  } 
+  }
 ];
 
 storiesOf("InventoryListItem", module) //Initiates Storybook and registers our InventoryListItem component
-.addParameters({
-  backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-}) // Provides the default background color for our component
-.add("Unselected", () => <InventoryListItem name="Rack of Ribs" quantity={5} description="saucy happiness" type="type" vendor="Slow Cow Farms"/>)
-.add("Selected", () => <InventoryListItem name="Rack of Ribs" quantity={5} description="saucy happiness" type="type" vendor="Slow Cow Farms"selected />) 
+  .addParameters({
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+  }) // Provides the default background color for our component
+  .add("Unselected", () => <InventoryListItem name="Rack of Ribs" quantity={5} description="saucy happiness" type="type" vendor="Slow Cow Farms" />)
+  .add("Selected", () => <InventoryListItem name="Rack of Ribs" quantity={5} description="saucy happiness" type="type" vendor="Slow Cow Farms" selected />)
 
 
 storiesOf("InventoryList", module)
@@ -72,19 +74,24 @@ storiesOf("InventoryList", module)
   ))
 
 storiesOf("Header", module)
-.add("logged in", () => (
-  <Header username="Bobby" logo="https://i.imgur.com/LpaY82x.png"/>
-))
-.add("logged out", () => (<Header logo="https://i.imgur.com/LpaY82x.png"/>))
+  .add("logged in", () => (
+    <Header username="Bobby" logo="https://i.imgur.com/LpaY82x.png" />
+  ))
+  .add("logged out", () => (<Header logo="https://i.imgur.com/LpaY82x.png" />))
 
 storiesOf("PurchaseOrderItem", module) //Initiates Storybook and registers our InventoryListItem component
-.addParameters({
-  backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
-}) // Provides the default background color for our component
-.add("Unselected", () => <PurchaseOrderItem customerName="BigBoxVender" POid={1} amount={1000.00} />)
+  .addParameters({
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+  }) // Provides the default background color for our component
+  .add("Unselected", () => <PurchaseOrderItem customerName="BigBoxVender" POid={1} amount={1000.00} />)
 
 storiesOf("PurchaseOrderList", module)
-.add("PurchaseOrderList", () => (
-  <PurchaseOrderList POs={POs} />
-))
+  .add("PurchaseOrderList", () => (
+    <PurchaseOrderList POs={POs} />
+  ))
+
+storiesOf("Test", module)
+  .add("test table", () => (
+    <Test />
+  ))
 

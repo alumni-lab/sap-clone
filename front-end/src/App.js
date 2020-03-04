@@ -4,7 +4,6 @@ import Dashboard from "./components/Dashboard";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-
 function App() {
   //Temp data
   const items = [
