@@ -17,6 +17,7 @@ import (
 // 	Note  string
 // }
 // schema.Vendors
+//test
 func (user *schema.Vendors) FindVendorByID(db *gorm.DB, uid uint32) (*schema.Vendors, error) {
 	// The Take() function on this line will assign the user to the
 	//	user object this is being called on if it exists.
