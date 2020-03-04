@@ -1,29 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import PurchaseOrderList from "../components/PurchaseOrderList.js";
-import InventoryItemList from "../components/InventoryItemList.js";
+// import PurchaseOrderList from "../components/PurchaseOrderList.js";
+import InventoryList from "./InventoryList.js";
+import PurchaseOrderList from "./PurchaseOrderList.js";
 
 
 export default function Dashboard(props) {
-  const [view, setView] = useState(props.view || "");
-
-
+  // const [view, setView] = useState(props.view || "");
+  const [view, setView] = useState("Inventory");
 
   return (
-    // searchbar
-    // button
-    // InventoryList
+    <div>
+      {view === "Inventory" ? (<InventoryList items={props.items} />) : (<PurchaseOrderList />)}
+      <h1>hello</h1>
+    </div>
   );
-  // const POs = props.POs.map(PO => {
-  //   return (
-  //     <PurchaseOrderItem
-  //       key={PO.id}
-  //       POid={PO.POid} 
-  //       customerName={PO.customerName} 
-  //       amount={PO.amount} 
-  //     />
-  //   );
-  // });
 
-  // return POs;
 }
