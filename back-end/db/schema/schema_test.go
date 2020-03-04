@@ -2,6 +2,7 @@ package schema
 
 import (
 	"database/sql"
+	"fmt"
 	"regexp"
 	"testing"
 
@@ -34,6 +35,13 @@ func (s *Suite) SetupSuite() {
 	s.DB.LogMode(true)
 }
 
+// Literally this entire time, all I needed to do was
+// 	make a regular test function actually start the suite,
+//	and pass the suite the test context.  AHHHHHHHHH!!!
+func TestRunSuite(t *testing.T) {
+	suite.Run(t, new(Suite))
+}
+
 func (s *Suite) TestUserGet() {
 	var (
 		id        uint32 = 1
@@ -44,8 +52,11 @@ func (s *Suite) TestUserGet() {
 	)
 
 	s.mock.ExpectQuery(regexp.QuoteMeta(
-		`SELECT * FROM "users" WHERE (id = $1)`)).
-		WithArgs(string(id)).
+		`SELECT * FROM "users" WHERE "users"."deleted_at" IS NULL AND ((id = $1)) LIMIT 1`)).
+		// This seems REALLY hacky.  We're using a print method
+		// that returns the string it prints to convert a
+		// uint into a string.  Revisit.  Also hilarious.
+		WithArgs(fmt.Sprint(id)).
 		WillReturnRows(sqlmock.NewRows([]string{
 			"id",
 			"firstName",
@@ -53,20 +64,32 @@ func (s *Suite) TestUserGet() {
 			"role",
 			"email",
 		}).
-			AddRow(string(1), firstName, lastName, role, email))
+			AddRow(fmt.Sprint(1), firstName, lastName, role, email))
 
+	s.T().Log("=======================")
+	s.T().Log(s.DB.Rows())
 	user := Users{}
 	res, err := user.FindUserByID(s.DB, 1)
 
-	print(res, err)
+	require.NoError(s.T(), err)
+	require.Exactly(s.T(), &Users{
+		FirstName: "Bob",
+		LastName:  "Ross",
+		Role:      "User",
+		Email:     "bobbyrossy@ross.com",
+	}, res)
 }
 
 func TestMigrate(t *testing.T) {
 	// Create a dummy DB and run Migrate(db)
 
-	// Check that all tables migrate should create exist.
+	// Check that all tables migrate should create exmodule github.com/alumni-lab/sap-cloneist.
 }
 
-func TestFinderUserByID(t *testing.T) {
+func TestFindUserByID(t *testing.T) {
 
+}
+
+func (s *Suite) AfterTest(_, _ string) {
+	require.NoError(s.T(), s.mock.ExpectationsWereMet())
 }
