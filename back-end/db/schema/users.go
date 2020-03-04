@@ -2,6 +2,7 @@ package schema
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/jinzhu/gorm"
 )
@@ -21,7 +22,7 @@ type Users struct {
 func (user *Users) FindUserByID(db *gorm.DB, uid uint32) (*Users, error) {
 	// The Take() function on this line will assign the user to the
 	//	user object this is being called on if it exists.
-	err := db.Debug().Model(Users{}).Where("id = ?", uid).Take(&user).Error
+	err := db.Debug().Model(Users{}).Where("id = ?", fmt.Sprint(uid)).Take(&user).Error
 
 	if err != nil {
 		return &Users{}, err

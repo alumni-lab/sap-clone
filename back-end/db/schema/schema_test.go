@@ -64,10 +64,9 @@ func (s *Suite) TestUserGet() {
 			"role",
 			"email",
 		}).
-			AddRow(fmt.Sprint(1), firstName, lastName, role, email))
+			AddRow(fmt.Sprint(0), firstName, lastName, role, email))
 
 	s.T().Log("=======================")
-	s.T().Log(s.DB.Rows())
 	user := Users{}
 	res, err := user.FindUserByID(s.DB, 1)
 
@@ -76,7 +75,7 @@ func (s *Suite) TestUserGet() {
 		FirstName: "Bob",
 		LastName:  "Ross",
 		Role:      "User",
-		Email:     "bobbyrossy@ross.com",
+		Email:     "bobbyrossy@ross.ross",
 	}, res)
 }
 
