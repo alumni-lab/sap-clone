@@ -13,6 +13,7 @@ function App() {
       quantity: 2,
       description: "saucy goodness",
       type: "type",
+      price: "3",
       vendor: "Slow Cow Farms"
     },
     {
@@ -21,6 +22,7 @@ function App() {
       quantity: 5,
       description: "not for dipping in sauce",
       type: "type",
+      price: "3",
       vendor: "Dunder Mifflin"
     },
     {
@@ -29,6 +31,7 @@ function App() {
       quantity: 11,
       description: "Rrrbit",
       type: "type",
+      price: "3",
       vendor: "a pond near here"
     },
   ];
