@@ -48,7 +48,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-// import Pagination from './Pagination';
+// Pagination Components
 import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import IconButton from '@material-ui/core/IconButton';
@@ -122,26 +122,12 @@ function TablePaginationActions(props) {
   );
 }
 
-// TablePaginationActions.propTypes = {
-//   count: PropTypes.number.isRequired,
-//   onChangePage: PropTypes.func.isRequired,
-//   page: PropTypes.number.isRequired,
-//   rowsPerPage: PropTypes.number.isRequired,
-// };
-const useStyles2 = makeStyles({
-  table: {
-    minWidth: 500,
-  },
-});
 // end pagination code
 
 export default function SimpleTable(props) {
   const classes = useStyles();
-
-  // const classes = useStyles2();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(2);
-
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, props.items.length - page * rowsPerPage);
 
   const handleChangePage = (event, newPage) => {
@@ -167,19 +153,6 @@ export default function SimpleTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {/* {props.items.map(item => (
-            <TableRow key={item.name}>
-              <TableCell component="th" scope="row">
-                {item.name}
-              </TableCell>
-              <TableCell align="right">{item.description}</TableCell>
-              <TableCell align="right">{item.quantity}</TableCell>
-              <TableCell align="right">{item.price}</TableCell>
-              <TableCell align="right">{item.type}</TableCell>
-              <TableCell align="right">{item.vendor}</TableCell>
-            </TableRow>
-          ))} */}
-
           {(rowsPerPage > 0
             ? props.items.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : props.items
@@ -195,7 +168,6 @@ export default function SimpleTable(props) {
               <TableCell align="right">{item.vendor}</TableCell>
             </TableRow>
           ))}
-
 
         </TableBody>
         <TableFooter>
@@ -216,7 +188,6 @@ export default function SimpleTable(props) {
             />
           </TableRow>
         </TableFooter>
-        {/* <Pagination /> */}
       </Table>
     </TableContainer>
   );
